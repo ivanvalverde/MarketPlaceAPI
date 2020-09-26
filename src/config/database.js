@@ -31,14 +31,18 @@ db.on('open', ()=>{
         razaoSocial: String,
         cnpj: String,
         telefone: String,
-        endereco: String
+        email: String,
+        endereco: String,
+        senha: String
 
     });
 
     const compraSchema = new mongoose.Schema({
         idCliente: String,
         idProduto: String,
-        idFornecedor: String
+        idFornecedor: String,
+        dataCompra: Date,
+        dataMaxCancelamento: Date
 
     });
 
