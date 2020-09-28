@@ -19,6 +19,32 @@ class UsuarioController {
             
         }
     }
+
+    static deletaUsuarios(){
+        return (req, res) => {
+            Usuario.deleteOne({email: req.params.email})
+        }
+    }
+
+    static addUsuarios(){
+        const Usuario = new mongoose.model('Usuario', usuarioSchema);
+
+        return async (req, res) => {
+            const user = new Usuario({});
+            user.nome = req.body.nome;
+            user.geraSenha(req.body.senha);
+            user.email = req.body.email;
+            user.cpf = req.body.cpf
+            user.telefone = req.body.telefone;
+            user.endereco = req.body.endereco;
+
+            await user.save((err) => {
+                if (err) res.send(err)
+            });
+
+            res.redirect('/usuario')
+        }
+    }
 }
 
 module.exports = UsuarioController;
