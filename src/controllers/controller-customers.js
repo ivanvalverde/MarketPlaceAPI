@@ -1,32 +1,51 @@
-require('dotenv/config'); 
+require('dotenv/config');
 const mongoose = require('mongoose');
-mongoose.connect(process.env.MONGODB,{useNewUrlParser: true, useUnifiedTopology: true});
+mongoose.connect(process.env.MONGODB, {
+    useNewUrlParser: true,
+    useUnifiedTopology: true
+});
 const usuarioSchema = require('../models/model-customer');
 
 
 class UsuarioController {
 
-    static exibeUsuarios(){
+    static exibeUsuarios() {
 
         const Usuario = new mongoose.model('Usuario', usuarioSchema);
 
-        return (req, res)=>{
-            
-            Usuario.find({}, (err, usuarios)=>{
-                if (err) {console.log(err)};
+        return (req, res) => {
+
+            Usuario.find({}, (err, usuarios) => {
+                if (err) {
+                    console.log(err)
+                };
                 res.send(usuarios);
             });
-            
+
         }
     }
 
-    static deletaUsuarios(){
-        return (req, res) => {
-            Usuario.deleteOne({email: req.params.email})
+    static deletaUsuarios() {
+        const Usuario = new mongoose.model('Usuario', usuarioSchema);
+
+        return async(req, res) => {
+            try {
+                Usuario.deleteOne({
+                    email: req.params.email
+                })
+
+                res.send({
+                    response: true, user: user
+                })
+            } catch (err) {
+                res.send({
+                    response: false, err: err
+                })
+            }
         }
     }
 
-    static addUsuarios(){
+    static addUsuarios() {
         const Usuario = new mongoose.model('Usuario', usuarioSchema);
 
         return async (req, res) => {
