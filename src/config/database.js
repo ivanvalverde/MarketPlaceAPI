@@ -1,17 +1,37 @@
-const credentials = require('../helpers/atlasAcessCredentials');
+require('dotenv/config'); 
 const mongoose = require('mongoose');
-mongoose.connect(`mongodb+srv://${credentials.user}:${credentials.password}@cluster0.pxbfi.gcp.mongodb.net/${credentials.clusterName}?retryWrites=true&w=majority`, {useNewUrlParser: true});
+mongoose.connect(process.env.MONGODB,{useNewUrlParser: true, useUnifiedTopology: true});
 const usuarioSchema = require('../models/model-customer');
-const produtoSchema = require('../models/model-product');
-const fornecedorSchema = require('../models/model-provider');
-const compraSchema = require('../models/model-purchase');
 const db = mongoose.connection;
+let bcrypt = require('bcryptjs');
 
-db.on('open', ()=>{
+const Usuario = new mongoose.model('Usuario', usuarioSchema);
+let senhacara = "";
+let saltocara = "";
+Usuario.find({email: "coelho@gmail.com"}, (err, usuario)=>{
+    senhacara = usuario[0].senha;
+    saltocara = usuario[0].salto;
+    console.log(senhacara);
+    console.log(saltocara);
+
+    const hash = bcrypt.hashSync("maionese",saltocara);
+
+    console.log(hash);
+
+    console.log(bcrypt.compareSync("maionese", senhacara));
+});
+
+
+
+/*db.on('open', ()=>{
 
     const Usuario = new mongoose.model('Usuario', usuarioSchema);
-    const Produto = new mongoose.model('Produto', produtoSchema);
-    const Fornecedor = new mongoose.model('Fornecedor', fornecedorSchema);
-    const Compra = new mongoose.model('Compra', compraSchema);
 
-});
+    const joka = new Usuario({usuario: "doido", email: "coelho@gmail.com"});
+    joka.geraSenha("maionese");
+
+    joka.save((err)=>{
+        if(err) console.log(`Não foi possível salvar, o erro foi ${err}`);
+    });
+
+});*/

@@ -10,4 +10,6 @@ const produtoSchema = new mongoose.Schema({
 
 });
 
-module.exports = produtoSchema;
+const Produto = new mongoose.model('Produto', produtoSchema);
+
+module.exports = Produto;

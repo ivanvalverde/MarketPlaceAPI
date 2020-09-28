@@ -1,6 +1,8 @@
+const UsuarioController = require('../controllers/controller-customers');
+
 module.exports = (app) => {
 
-    app.get('/usuario', ()=>{});
+    app.get('/usuario', UsuarioController.exibeUsuarios());
     
     app.post('/usuario', ()=>{});
     

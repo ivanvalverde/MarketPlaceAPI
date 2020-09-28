@@ -7,8 +7,11 @@ const fornecedorSchema = new mongoose.Schema({
     telefone: String,
     email: String,
     endereco: String,
+    salto: String,
     senha: String
 
 });
 
-module.exports = fornecedorSchema;
+const Fornecedor = new mongoose.model('Fornecedor', fornecedorSchema);
+
+module.exports = Fornecedor;

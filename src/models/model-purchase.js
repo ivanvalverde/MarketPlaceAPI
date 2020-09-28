@@ -9,4 +9,6 @@ const compraSchema = new mongoose.Schema({
 
 });
 
-module.exports = compraSchema;
+const Compra = new mongoose.model('Compra', compraSchema);
+
+module.exports = Compra;
