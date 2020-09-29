@@ -6,6 +6,7 @@ mongoose.connect(process.env.MONGODB, {
 });
 const usuarioSchema = require('../models/model-customer');
 const exibirDados = require('../helpers/exibirDados');
+const exibirDado = require('../helpers/exibirDado');
 const atualizaDados = require('../helpers/atualizaDados');
 const insereDados = require('../helpers/insereDados');
 const deletaDados = require('../helpers/deletaDados');
@@ -20,6 +21,17 @@ class UsuarioController {
         return (req, res) => {
 
             exibirDados(Usuario, res);
+
+        }
+    }
+
+    static exibeUsuario() {
+
+        const Usuario = new mongoose.model('Usuario', usuarioSchema);
+
+        return (req, res) => {
+
+            exibirDado(Usuario, req ,res);
 
         }
     }

@@ -1,4 +1,6 @@
 const mongoose = require('mongoose');
+const funcHash = require('../helpers/hash');
+
 
 const fornecedorSchema = new mongoose.Schema({
     nome: String,

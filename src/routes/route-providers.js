@@ -1,11 +1,15 @@
+const FornecedorController = require('../controllers/controller-providers');
+
 module.exports = (app) => {
 
-    app.get('/fornecedor', ()=>{});
+    app.get('/fornecedor', FornecedorController.exibeFornecedores());
+
+    app.get('/fornecedor/:email', FornecedorController.exibeFornecedor());
     
-    app.post('/fornecedor', ()=>{});
+    app.post('/fornecedor/adiciona', FornecedorController.addFornecedores());
     
-    app.delete('/fornecedor/:id', ()=>{});
+    app.delete('/fornecedor/:email', FornecedorController.deletaFornecedor());
     
-    app.put('/fornecedor/:id', ()=>{});
+    app.put('/fornecedor/:id', FornecedorController.atualizaFornecedor());
     
 }
