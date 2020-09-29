@@ -10,6 +10,6 @@ module.exports = (app) => {
     
     app.delete('/fornecedor/:email', FornecedorController.deletaFornecedor());
     
-    app.put('/fornecedor/:id', ()=>{});
+    app.put('/fornecedor/:id', FornecedorController.atualizaFornecedor());
     
 }

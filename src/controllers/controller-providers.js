@@ -69,13 +69,13 @@ class FornecedorController {
     }
   }
 
-  static atualizaUsuarios() {
+  static atualizaFornecedor() {
 
-    const Usuario = new mongoose.model('Usuario', usuarioSchema);
+    const Fornecedor = new mongoose.model('Fornecedor', fornecedorSchema);
 
     return (req, res) => {
 
-      atualizaDados(Usuario, req.params.id, req.body, res);
+      atualizaDados(Fornecedor, req.params.id, req.body, res);
 
     }
 
