@@ -1,6 +1,8 @@
+const FornecedorController = require('../controllers/controller-providers');
+
 module.exports = (app) => {
 
-    app.get('/fornecedor', ()=>{});
+    app.get('/fornecedor', FornecedorController.exibeFornecedores());
     
     app.post('/fornecedor', ()=>{});
     
