@@ -1,10 +1,12 @@
+const UsuarioController = require('../controllers/controller-customers');
+
 module.exports = (app) => {
 
-    app.get('/usuario', ()=>{});
+    app.get('/usuario', UsuarioController.exibeUsuarios());
     
-    app.post('/usuario', ()=>{});
+    app.post('/usuario/adiciona', UsuarioController.addUsuarios());
     
-    app.delete('/usuario/:id', ()=>{});
+    app.delete('/usuario/:email', UsuarioController.deletaUsuarios());
     
     app.put('/usuario/:id', ()=>{});
     

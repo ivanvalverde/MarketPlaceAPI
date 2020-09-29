@@ -1,54 +1,37 @@
-const credentials = require('../helpers/atlasAcessCredentials');
+require('dotenv/config'); 
 const mongoose = require('mongoose');
-mongoose.connect(`mongodb+srv://${credentials.user}:${credentials.password}@cluster0.pxbfi.gcp.mongodb.net/${credentials.clusterName}?retryWrites=true&w=majority`, {useNewUrlParser: true});
-
+mongoose.connect(process.env.MONGODB,{useNewUrlParser: true, useUnifiedTopology: true});
+const usuarioSchema = require('../models/model-customer');
 const db = mongoose.connection;
+let bcrypt = require('bcryptjs');
 
-db.on('open', ()=>{
+const Usuario = new mongoose.model('Usuario', usuarioSchema);
+let senhacara = "";
+let saltocara = "";
+Usuario.find({email: "coelho@gmail.com"}, (err, usuario)=>{
+    senhacara = usuario[0].senha;
+    saltocara = usuario[0].salto;
+    console.log(senhacara);
+    console.log(saltocara);
 
-    const usuarioSchema = new mongoose.Schema({
-        nome: String,
-        senha: String,
-        email: String,
-        cpf: String,
-        telefone: String,
-        endereco: String
+    const hash = bcrypt.hashSync("maionese",saltocara);
 
-    });
+    console.log(hash);
 
-    const produtoSchema = new mongoose.Schema({
-        nome: String,
-        descricao: String,
-        avaliacao: String,
-        preco: Number,
-        estoque: Number,
-        fornecedor: String
+    console.log(bcrypt.compareSync("maionese", senhacara));
+});
 
-    });
 
-    const fornecedorSchema = new mongoose.Schema({
-        nome: String,
-        razaoSocial: String,
-        cnpj: String,
-        telefone: String,
-        email: String,
-        endereco: String,
-        senha: String
 
-    });
-
-    const compraSchema = new mongoose.Schema({
-        idCliente: String,
-        idProduto: String,
-        idFornecedor: String,
-        dataCompra: Date,
-        dataMaxCancelamento: Date
-
-    });
+/*db.on('open', ()=>{
 
     const Usuario = new mongoose.model('Usuario', usuarioSchema);
-    const Produto = new mongoose.model('Produto', produtoSchema);
-    const Fornecedor = new mongoose.model('Fornecedor', fornecedorSchema);
-    const Compra = new mongoose.model('Compra', compraSchema);
 
-});
+    const joka = new Usuario({usuario: "doido", email: "coelho@gmail.com"});
+    joka.geraSenha("maionese");
+
+    joka.save((err)=>{
+        if(err) console.log(`Não foi possível salvar, o erro foi ${err}`);
+    });
+
+});*/
