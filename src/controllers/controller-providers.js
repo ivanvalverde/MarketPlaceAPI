@@ -46,13 +46,26 @@ class FornecedorController {
     }
   }
 
-  static addUsuarios() {
+  static addFornecedores() {
 
-    const Usuario = new mongoose.model('Usuario', usuarioSchema);
+    const Fornecedor = new mongoose.model('Fornecedor', fornecedorSchema);
 
     return async (req, res) => {
 
-      await insereDados(Usuario, req, res);
+      const fornecedor = new Fornecedor({});
+      fornecedor.nome = req.body.nome;
+      fornecedor.razaoSocial = req.body.razaoSocial;
+      await fornecedor.geraSenha(req.body.senha);
+      fornecedor.email = req.body.email;
+      fornecedor.cnpj = req.body.cnpj;
+      fornecedor.telefone = req.body.telefone;
+      fornecedor.endereco = req.body.endereco;
+
+      await fornecedor.save((err) => {
+        if (err) res.send(err)
+      });
+
+      res.redirect('/fornecedor')
     }
   }
 
