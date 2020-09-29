@@ -8,6 +8,6 @@ module.exports = (app) => {
     
     app.delete('/usuario/:id', ()=>{});
     
-    app.put('/usuario/:id', ()=>{});
+    app.put('/usuario/:id', UsuarioController.atualizaUsuarios());
     
 }

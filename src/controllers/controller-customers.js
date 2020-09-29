@@ -2,6 +2,8 @@ require('dotenv/config');
 const mongoose = require('mongoose');
 mongoose.connect(process.env.MONGODB,{useNewUrlParser: true, useUnifiedTopology: true});
 const usuarioSchema = require('../models/model-customer');
+const exibirDados = require('../helpers/exibirDados');
+const atualizaDados = require('../helpers/atualizaDados');
 
 
 class UsuarioController {
@@ -12,12 +14,21 @@ class UsuarioController {
 
         return (req, res)=>{
             
-            Usuario.find({}, (err, usuarios)=>{
-                if (err) {console.log(err)};
-                res.send(usuarios);
-            });
+            exibirDados(Usuario,res);
             
         }
+    }
+
+    static atualizaUsuarios(){
+
+        const Usuario = new mongoose.model('Usuario', usuarioSchema);
+
+        return (req, res)=>{
+
+            atualizaDados(Usuario, req.params.id, req.body, res);
+
+        }
+
     }
 }
 
