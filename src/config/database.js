@@ -27,10 +27,10 @@ Usuario.find({email: "coelho@gmail.com"}, (err, usuario)=>{
 
     const Usuario = new mongoose.model('Usuario', usuarioSchema);
 
-    const joka = new Usuario({usuario: "doido", email: "coelho@gmail.com"});
-    joka.geraSenha("maionese");
+    const olho = new Usuario({usuario: "doido", email: "coelho@gmail.com"});
+    olho.geraSenha("maionese");
 
-    joka.save((err)=>{
+    olho.save((err)=>{
         if(err) console.log(`Não foi possível salvar, o erro foi ${err}`);
     });
 

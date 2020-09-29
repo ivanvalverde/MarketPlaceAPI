@@ -5,6 +5,10 @@ mongoose.connect(process.env.MONGODB, {
     useUnifiedTopology: true
 });
 const usuarioSchema = require('../models/model-customer');
+const exibirDados = require('../helpers/exibirDados');
+const atualizaDados = require('../helpers/atualizaDados');
+const insereDados = require('../helpers/insereDados');
+const deletaDados = require('../helpers/deletaDados');
 
 
 class UsuarioController {
@@ -15,54 +19,41 @@ class UsuarioController {
 
         return (req, res) => {
 
-            Usuario.find({}, (err, usuarios) => {
-                if (err) {
-                    console.log(err)
-                };
-                res.send(usuarios);
-            });
+            exibirDados(Usuario, res);
 
         }
     }
 
     static deletaUsuarios() {
+        
         const Usuario = new mongoose.model('Usuario', usuarioSchema);
 
-        return async(req, res) => {
-            try {
-                Usuario.deleteOne({
-                    email: req.params.email
-                })
-
-                res.send({
-                    response: true, user: user
-                })
-            } catch (err) {
-                res.send({
-                    response: false, err: err
-                })
-            }
+        return async (req, res) => {
+            
+            await deletaDados(Usuario, req, res)
         }
     }
 
     static addUsuarios() {
+
         const Usuario = new mongoose.model('Usuario', usuarioSchema);
 
         return async (req, res) => {
-            const user = new Usuario({});
-            user.nome = req.body.nome;
-            user.geraSenha(req.body.senha);
-            user.email = req.body.email;
-            user.cpf = req.body.cpf
-            user.telefone = req.body.telefone;
-            user.endereco = req.body.endereco;
 
-            await user.save((err) => {
-                if (err) res.send(err)
-            });
-
-            res.redirect('/usuario')
+            await insereDados(Usuario, req, res);
         }
+    }
+
+    static atualizaUsuarios(){
+
+        const Usuario = new mongoose.model('Usuario', usuarioSchema);
+
+        return (req, res)=>{
+
+            atualizaDados(Usuario, req.params.id, req.body, res);
+
+        }
+
     }
 }
 
