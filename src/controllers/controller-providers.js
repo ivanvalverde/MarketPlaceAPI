@@ -36,13 +36,13 @@ class FornecedorController {
     }
   }
 
-  static deletaUsuarios() {
+  static deletaFornecedor() {
 
-    const Usuario = new mongoose.model('Usuario', usuarioSchema);
+    const Fornecedor = new mongoose.model('Fornecedor', fornecedorSchema);
 
     return async (req, res) => {
 
-      await deletaDados(Usuario, req, res)
+      await deletaDados(Fornecedor, req, res)
     }
   }
 

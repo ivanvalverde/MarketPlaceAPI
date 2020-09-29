@@ -8,7 +8,7 @@ module.exports = (app) => {
     
     app.post('/fornecedor/adiciona', FornecedorController.addFornecedores());
     
-    app.delete('/fornecedor/:id', ()=>{});
+    app.delete('/fornecedor/:email', FornecedorController.deletaFornecedor());
     
     app.put('/fornecedor/:id', ()=>{});
     
