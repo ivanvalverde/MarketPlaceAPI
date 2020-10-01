@@ -4,7 +4,7 @@ module.exports = (app) => {
 
     app.get('/compra', CompraController.exibeCompras());
 
-    app.get('/compra/:idProduto', ()=>{});
+    app.get('/compra/:idProduto', CompraController.exibeComprasProduto());
 
     app.get('/compra/:idCliente', ()=>{});
     

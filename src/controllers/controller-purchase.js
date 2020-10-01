@@ -30,7 +30,7 @@ class CompraController {
         const Compra = new mongoose.model('Compra', compraSchema);
 
         return (req, res) => {
-            const { idProduto } = req.params.idProduto
+            const { idProduto } = req.params;
             Compra.find({idProduto}, (err, compras) =>{
                 if(err) res.send(err)
                 res.send(compras)
