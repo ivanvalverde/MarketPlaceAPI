@@ -39,13 +39,13 @@ class CompraController {
         }
     }
 
-    static exibeComprasUsuario() {
+    static exibeComprasCliente() {
 
         const Compra = new mongoose.model('Compra', compraSchema);
 
         return (req, res) => {
-            const { idUsuario } = req.params.idUsuario
-            Compra.find({idUsuario}, (err, compras) =>{
+            const { idCliente } = req.params;
+            Compra.find({idCliente}, (err, compras) =>{
                 if(err) res.send(err)
                 res.send(compras)
             })
