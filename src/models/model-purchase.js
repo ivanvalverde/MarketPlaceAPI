@@ -3,10 +3,8 @@ const mongoose = require('mongoose');
 const compraSchema = new mongoose.Schema({
     idCliente: String,
     idProduto: String,
-    idFornecedor: String,
     dataCompra: Date,
-    dataMaxCancelamento: Date
-
+    dataCancelamento: Date
 });
 
 module.exports = compraSchema;
