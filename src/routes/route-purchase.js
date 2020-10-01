@@ -1,11 +1,15 @@
+const CompraController = require("../controllers/controller-purchase");
+
 module.exports = (app) => {
 
-    app.get('/compra', ()=>{});
+    app.get('/compra', CompraController.exibeCompras());
+
+    app.get('/compra/:idProduto', ()=>{});
+
+    app.get('/compra/:idCliente', ()=>{});
     
-    app.post('/compra', ()=>{});
-    
-    app.delete('/compra/:id', ()=>{});
-    
-    app.put('/compra/:id', ()=>{});
+    app.post('/compra/adiciona/', CompraController.realizaCompra());
+
+    app.put('/compra/:_id', ()=>{});
     
 }
