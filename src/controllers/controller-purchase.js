@@ -59,7 +59,8 @@ class CompraController {
 
         return async (req, res) => {
             const { _id } = req.params;
-            Compra.replaceOne({ _id }, { dataCancelamento: dataAtual()})
+            await Compra.update({ _id },{$set: { dataCancelamento: dataAtual()}})
+            res.send("Item Modificado")
         }
     }
 

@@ -10,6 +10,6 @@ module.exports = (app) => {
     
     app.post('/compra/adiciona/', CompraController.realizaCompra());
 
-    app.put('/compra/:_id', ()=>{});
+    app.put('/compra/:_id', CompraController.cancelaCompra());
     
 }
