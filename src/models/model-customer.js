@@ -12,10 +12,11 @@ const usuarioSchema = new mongoose.Schema({
 
 }); 
 
-usuarioSchema.methods.geraSenha = function(pass){
+usuarioSchema.methods.setSenha = function(pass){
     hashObj = funcHash(pass);
     this.senha = hashObj.storedHash;
     this.salto = hashObj.storedSalt;
 }
+
 
 module.exports = usuarioSchema;
