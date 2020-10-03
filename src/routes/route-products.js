@@ -4,12 +4,12 @@ module.exports = (app) => {
 
     app.get('/produto', ProdutoController.exibeProdutos());
 
-    app.get('/produto/:nome', ProdutoController.exibeProduto());
+    app.get('/produto/:_id', ProdutoController.exibeProduto());
     
-    app.post('/produto/adiciona', ProdutoController.addProdutos());
+    app.post('/produto/adiciona', ProdutoController.adicionaProduto());
     
-    app.delete('/produto/:id', ProdutoController.deletaProdutos());
+    app.delete('/produto/:_id', ProdutoController.deletaProduto());
     
-    app.put('/produto/:id', ProdutoController.atualizaProdutos());
+    app.put('/produto/:_id', ProdutoController.atualizaProduto());
     
 }
