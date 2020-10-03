@@ -6,7 +6,7 @@ module.exports = (app) => {
 
     app.get('/fornecedor/:_id', FornecedorController.exibeFornecedor());
     
-    app.post('/fornecedor/adiciona', FornecedorController.addFornecedores());
+    app.post('/fornecedor/adiciona', FornecedorController.adicionaFornecedor());
     
     app.delete('/fornecedor/:_id', FornecedorController.deletaFornecedor());
     
