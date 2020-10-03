@@ -14,7 +14,7 @@ const fornecedorSchema = new mongoose.Schema({
 
 });
 
-fornecedorSchema.methods.geraSenha = function(pass){
+fornecedorSchema.methods.setSenha = function(pass){
     hashObj = funcHash(pass);
     this.senha = hashObj.storedHash;
     this.salto = hashObj.storedSalt;
