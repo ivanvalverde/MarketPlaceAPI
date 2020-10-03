@@ -1,10 +1,10 @@
 const express = require('express');
 const app = express();
 const bodyParser = require('body-parser');
-const rotasUsuario = require('./src/routes/route-customers');
-const rotasFornecedor = require('./src/routes/route-providers');
-const rotasProdutos = require('./src/routes/route-products');
-const rotasCompras = require('./src/routes/route-purchase')
+const rotasCliente = require('./src/routes/cliente');
+const rotasFornecedor = require('./src/routes/fornecedor');
+const rotasProdutos = require('./src/routes/produto');
+const rotasCompras = require('./src/routes/compra')
 
 const port = process.env.PORT || 3000;
 
@@ -14,7 +14,7 @@ app.use(bodyParser.urlencoded({
 
 app.use(bodyParser.json());
 
-rotasUsuario(app);
+rotasCliente(app);
 rotasFornecedor(app);
 rotasProdutos(app);
 rotasCompras(app);
