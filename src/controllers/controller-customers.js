@@ -28,10 +28,10 @@ class UsuarioController {
         }
     }
 
-    static deletaUsuarios() {
+    static deletaUsuario() {
     
-        return async (req, res) => {
-            await deletaDados(Usuario, req, res)
+        return (req, res) => {
+            deletaDados(Usuario, req, res)
         }
     }
 
