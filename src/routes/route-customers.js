@@ -10,6 +10,6 @@ module.exports = (app) => {
     
     app.delete('/usuario/:_id', UsuarioController.deletaUsuario());
     
-    app.put('/usuario/:_id', UsuarioController.atualizaUsuarios());
+    app.put('/usuario/altera/:_id', UsuarioController.atualizaUsuarios());
     
 }
