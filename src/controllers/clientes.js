@@ -17,21 +17,21 @@ class ClientesController {
         }
     }
 
-    static exibeClientes() {
+    static exibeCliente() {
 
         return (req, res) => {
             exibirDado(Cliente, req ,res);
         }
     }
 
-    static deletaClientes() {
+    static deletaCliente() {
     
         return (req, res) => {
             deletaDados(Cliente, req, res)
         }
     }
 
-    static adicionaClientes() {
+    static adicionaCliente() {
 
         return async (req, res) => {
             const { cpf } = req.body;
@@ -44,7 +44,7 @@ class ClientesController {
         }
     }
 
-    static atualizaClientes(){
+    static atualizaCliente(){
 
         return (req, res)=>{
 
