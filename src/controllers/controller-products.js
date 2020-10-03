@@ -19,7 +19,6 @@ class ProdutoController {
     static exibeProdutos() {
 
         return (req, res) => {
-
             exibirDados(Produto, res);
 
         }
@@ -28,7 +27,6 @@ class ProdutoController {
     static exibeProduto() {
 
         return (req, res) => {
-
             exibirProduto(Produto, req ,res);
 
         }
@@ -37,8 +35,7 @@ class ProdutoController {
     static deletaProdutos() {
     
 
-        return async (req, res) => {
-            
+        return async (req, res) => {            
             await deletaProdutos(Produto, req, res)
         }
     }
@@ -46,22 +43,17 @@ class ProdutoController {
     static addProdutos() {
 
         return async (req, res) => {
-
             await insereProdutos(Produto, Fornecedor, req, res);
         }
     }
 
     static atualizaProdutos(){
 
-        return (req, res)=>{
-
+        return (req, res) => {
             atualizaProduto(Produto, req.params.id, req.body, res);
-
         }
 
     }
-
-
 }
 
 module.exports = ProdutoController;
