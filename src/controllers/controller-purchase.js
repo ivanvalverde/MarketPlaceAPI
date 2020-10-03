@@ -27,7 +27,7 @@ class CompraController {
       const { idProduto } = req.params;
       Compra.find({ idProduto }, (err, compras) => {
         if (err) res.send(JSON.stringify({ results: err }));
-        res.send(JSON.stringify({ results: elemento }));
+        res.send(JSON.stringify({ results: compras }));
       });
     };
   }
@@ -36,8 +36,8 @@ class CompraController {
     return (req, res) => {
       const { idCliente } = req.params;
       Compra.find({ idCliente }, (err, compras) => {
-        if (err) res.send(err);
-        res.send(compras);
+        if (err) res.send(JSON.stringify({ results: err }));
+        res.send(JSON.stringify({ results: compras }));
       });
     };
   }
@@ -45,7 +45,7 @@ class CompraController {
   static cancelaCompra() {
     return async (req, res) => {
       const { _id } = req.params;
-      await Compra.update({ _id }, { $set: { dataCancelamento: dataAtual() } });
+      await Compra.updateOne({ _id }, { dataCancelamento: dataAtual() });
       res.send("Item Modificado");
     };
   }
@@ -56,8 +56,7 @@ class CompraController {
       verificaExistencia(Cliente, idCliente, res);
       verificaExistencia(Produto, idProduto, res);
       const compra = new Compra({idProduto, idCliente, dataCompra: dataAtual(),dataCancelamento: null});
-
-      compra.save((err) => { if (err) res.send(err); });
+      compra.save((err) => { if (err) res.send(JSON.stringify({erro: "Compra não finalizada"})); });
       
       res.redirect("/compra");
     };
