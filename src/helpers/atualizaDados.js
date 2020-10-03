@@ -1,13 +1,10 @@
-module.exports = function atualizaDados(dado,id,mudanca,resp){
-    
-    dado.find({"nome": id}, (err, elemento)=>{
-        if (err) return err;
-        
-            elemento[0].nome = mudanca.nome;
-            elemento[0].email = mudanca.email;
-        
-            elemento[0].save();
-
-        resp.status(200).send('Item modificado');
-    });
-}
+module.exports = async (Model, req, res) => {
+  const { _id } = req.params;
+  delete req.body.senha;
+  try {
+    await Model.updateOne({ _id }, { ...req.body });
+    res.send(JSON.stringify({ modified: true }));
+  } catch (err) {
+    res.send(JSON.stringify({ modified: false }));
+  }
+};

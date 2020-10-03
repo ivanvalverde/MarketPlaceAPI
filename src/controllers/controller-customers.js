@@ -52,7 +52,7 @@ class UsuarioController {
 
         return (req, res)=>{
 
-            atualizaDados(Usuario, req.params.id, req.body, res);
+            atualizaDados(Usuario, req, res);
 
         }
 
