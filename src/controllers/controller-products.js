@@ -7,8 +7,8 @@ mongoose.connect(process.env.MONGODB, {
 const Produto = require("../models/model-product");
 const Fornecedor = require("../models/model-provider");
 const exibirDados = require("../helpers/exibirDados");
-const atualizaProduto = require("../helpers/atualizaProduto");
 const deletaDados = require("../helpers/deletaDados");
+const atualizaDados = require("../helpers/atualizaDados");
 
 class ProdutoController {
   static exibeProdutos() {
@@ -42,7 +42,7 @@ class ProdutoController {
 
   static atualizaProduto() {
     return (req, res) => {
-      atualizaProduto(Produto, req.params.id, req.body, res);
+      atualizaDados(Produto, req, res);
     };
   }
 }
