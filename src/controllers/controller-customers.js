@@ -17,35 +17,34 @@ class UsuarioController {
     static exibeUsuarios() {
 
         return (req, res) => {
-
             exibirDados(Usuario, res);
-
         }
     }
 
     static exibeUsuario() {
 
         return (req, res) => {
-
             exibirDado(Usuario, req ,res);
-
         }
     }
 
     static deletaUsuarios() {
     
-
         return async (req, res) => {
-            
             await deletaDados(Usuario, req, res)
         }
     }
 
-    static addUsuarios() {
+    static adicionaUsuario() {
 
         return async (req, res) => {
-
-            await insereDados(Usuario, req, res);
+            const { cpf } = req.body;
+            const usuario = insereDados(Usuario, req, res);
+            usuario.cpf = cpf;
+            await usuario.save((err) => {
+                if(err) res.send(JSON.stringify({results: err}))
+            })
+            res.redirect('/usuario')
         }
     }
 

@@ -6,7 +6,7 @@ module.exports = (app) => {
 
     app.get('/usuario/:email', UsuarioController.exibeUsuario());
     
-    app.post('/usuario/adiciona', UsuarioController.addUsuarios());
+    app.post('/usuario/adiciona', UsuarioController.adicionaUsuario());
     
     app.delete('/usuario/:email', UsuarioController.deletaUsuarios());
     
