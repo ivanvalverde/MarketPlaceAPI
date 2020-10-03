@@ -4,7 +4,7 @@ mongoose.connect(process.env.MONGODB, {
     useNewUrlParser: true,
     useUnifiedTopology: true
 });
-const usuarioSchema = require('../models/model-customer');
+const Usuario = require('../models/model-customer');
 const exibirDados = require('../helpers/exibirDados');
 const exibirDado = require('../helpers/exibirDado');
 const atualizaDados = require('../helpers/atualizaDados');
@@ -16,8 +16,6 @@ class UsuarioController {
 
     static exibeUsuarios() {
 
-        const Usuario = new mongoose.model('Usuario', usuarioSchema);
-
         return (req, res) => {
 
             exibirDados(Usuario, res);
@@ -27,8 +25,6 @@ class UsuarioController {
 
     static exibeUsuario() {
 
-        const Usuario = new mongoose.model('Usuario', usuarioSchema);
-
         return (req, res) => {
 
             exibirDado(Usuario, req ,res);
@@ -37,8 +33,7 @@ class UsuarioController {
     }
 
     static deletaUsuarios() {
-        
-        const Usuario = new mongoose.model('Usuario', usuarioSchema);
+    
 
         return async (req, res) => {
             
@@ -48,8 +43,6 @@ class UsuarioController {
 
     static addUsuarios() {
 
-        const Usuario = new mongoose.model('Usuario', usuarioSchema);
-
         return async (req, res) => {
 
             await insereDados(Usuario, req, res);
@@ -57,8 +50,6 @@ class UsuarioController {
     }
 
     static atualizaUsuarios(){
-
-        const Usuario = new mongoose.model('Usuario', usuarioSchema);
 
         return (req, res)=>{
 
