@@ -1,9 +1,4 @@
-require("dotenv/config");
-const mongoose = require("mongoose");
-mongoose.connect(process.env.MONGODB, {
-  useNewUrlParser: true,
-  useUnifiedTopology: true,
-});
+const banco = require('../config/database');
 const Produto = require("../models/model-product");
 const Fornecedor = require("../models/model-provider");
 const exibirDados = require("../helpers/exibirDados");

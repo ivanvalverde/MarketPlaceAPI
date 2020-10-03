@@ -1,15 +1,11 @@
-require('dotenv/config');
-const mongoose = require('mongoose');
-mongoose.connect(process.env.MONGODB, {
-    useNewUrlParser: true,
-    useUnifiedTopology: true
-});
+const banco = require('../config/database');
 const Usuario = require('../models/model-customer');
 const exibirDados = require('../helpers/exibirDados');
 const exibirDado = require('../helpers/exibirDado');
 const atualizaDados = require('../helpers/atualizaDados');
 const insereDados = require('../helpers/insereDados');
 const deletaDados = require('../helpers/deletaDados');
+
 
 
 class UsuarioController {
