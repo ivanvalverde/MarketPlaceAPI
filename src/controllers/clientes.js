@@ -1,5 +1,5 @@
 const banco = require('../config/database');
-const Usuario = require('../models/model-customer');
+const Cliente = require('../models/cliente');
 const exibirDados = require('../helpers/exibirDados');
 const exibirDado = require('../helpers/exibirDado');
 const atualizaDados = require('../helpers/atualizaDados');
@@ -8,51 +8,51 @@ const deletaDados = require('../helpers/deletaDados');
 
 
 
-class UsuarioController {
+class ClientesController {
 
-    static exibeUsuarios() {
+    static exibeClientes() {
 
         return (req, res) => {
-            exibirDados(Usuario, res);
+            exibirDados(Cliente, res);
         }
     }
 
-    static exibeUsuario() {
+    static exibeClientes() {
 
         return (req, res) => {
-            exibirDado(Usuario, req ,res);
+            exibirDado(Cliente, req ,res);
         }
     }
 
-    static deletaUsuario() {
+    static deletaClientes() {
     
         return (req, res) => {
-            deletaDados(Usuario, req, res)
+            deletaDados(Cliente, req, res)
         }
     }
 
-    static adicionaUsuario() {
+    static adicionaClientes() {
 
         return async (req, res) => {
             const { cpf } = req.body;
-            const usuario = insereDados(Usuario, req, res);
-            usuario.cpf = cpf;
-            await usuario.save((err) => {
+            const cliente = insereDados(Cliente, req, res);
+            cliente.cpf = cpf;
+            await cliente.save((err) => {
                 if(err) res.send(JSON.stringify({results: err}))
             })
-            res.redirect('/usuario')
+            res.redirect('/cliente')
         }
     }
 
-    static atualizaUsuarios(){
+    static atualizaClientes(){
 
         return (req, res)=>{
 
-            atualizaDados(Usuario, req, res);
+            atualizaDados(Cliente, req, res);
 
         }
 
     }
 }
 
-module.exports = UsuarioController;
+module.exports = ClientesController;

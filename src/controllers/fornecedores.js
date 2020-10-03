@@ -1,5 +1,5 @@
 const banco = require('../config/database');
-const Fornecedor = require('../models/model-provider');
+const Fornecedor = require('../models/fornecedor');
 const exibirDados = require('../helpers/exibirDados');
 const exibirDado = require('../helpers/exibirDado');
 const atualizaDados = require('../helpers/atualizaDados');

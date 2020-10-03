@@ -1,8 +1,8 @@
 const banco = require('../config/database');
 
-const Compra = require("../models/model-purchase");
-const Cliente = require("../models/model-customer");
-const Produto = require("../models/model-product");
+const Compra = require("../models/compra");
+const Cliente = require("../models/cliente");
+const Produto = require("../models/produto");
 const exibirDados = require("../helpers/exibirDados");
 const dataAtual = require("../helpers/dataAtual");
 const verificaExistencia = require("../helpers/verificaExistencia");
