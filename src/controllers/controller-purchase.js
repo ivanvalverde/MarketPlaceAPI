@@ -4,7 +4,7 @@ mongoose.connect(process.env.MONGODB, {
     useNewUrlParser: true,
     useUnifiedTopology: true
 });
-const compraSchema = require('../models/model-purchase');
+const Compra = require('../models/model-purchase');
 const exibirDados = require('../helpers/exibirDados');
 const atualizaDados = require('../helpers/atualizaDados');
 const insereDados = require('../helpers/insereDados');
@@ -16,8 +16,6 @@ class CompraController {
 
     static exibeCompras() {
 
-        const Compra = new mongoose.model('Compra', compraSchema);
-
         return (req, res) => {
 
             exibirDados(Compra, res);
@@ -26,8 +24,6 @@ class CompraController {
     }
 
     static exibeComprasProduto() {
-
-        const Compra = new mongoose.model('Compra', compraSchema);
 
         return (req, res) => {
             const { idProduto } = req.params;
@@ -41,8 +37,6 @@ class CompraController {
 
     static exibeComprasCliente() {
 
-        const Compra = new mongoose.model('Compra', compraSchema);
-
         return (req, res) => {
             const { idCliente } = req.params;
             Compra.find({idCliente}, (err, compras) =>{
@@ -54,8 +48,7 @@ class CompraController {
     }
 
     static cancelaCompra() {
-        
-        const Compra = new mongoose.model('Compra', compraSchema);
+      
 
         return async (req, res) => {
             const { _id } = req.params;
@@ -65,8 +58,6 @@ class CompraController {
     }
 
     static realizaCompra() {
-
-        const Compra = new mongoose.model('Compra', compraSchema);
 
         return async (req, res) => {
             const {idProduto, idCliente} = req.body;
