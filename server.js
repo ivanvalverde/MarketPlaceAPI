@@ -3,6 +3,8 @@ const app = express();
 const bodyParser = require('body-parser');
 const rotasUsuario = require('./src/routes/route-customers');
 const rotasFornecedor = require('./src/routes/route-providers');
+const rotasProdutos = require('./src/routes/route-products');
+const rotasCompras = require('./src/routes/route-purchase')
 
 const port = process.env.PORT || 3000;
 
@@ -14,6 +16,8 @@ app.use(bodyParser.json());
 
 rotasUsuario(app);
 rotasFornecedor(app);
+rotasProdutos(app);
+rotasCompras(app);
 
 app.listen(port, () => {
     console.log(`http://localhost:${port}/usuario`);
