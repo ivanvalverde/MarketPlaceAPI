@@ -4,12 +4,12 @@ module.exports = (app) => {
 
     app.get('/fornecedor', FornecedorController.exibeFornecedores());
 
-    app.get('/fornecedor/:email', FornecedorController.exibeFornecedor());
+    app.get('/fornecedor/:_id', FornecedorController.exibeFornecedor());
     
     app.post('/fornecedor/adiciona', FornecedorController.addFornecedores());
     
-    app.delete('/fornecedor/:email', FornecedorController.deletaFornecedor());
+    app.delete('/fornecedor/:_id', FornecedorController.deletaFornecedor());
     
-    app.put('/fornecedor/:id', FornecedorController.atualizaFornecedor());
+    app.put('/fornecedor/:_id', FornecedorController.atualizaFornecedor());
     
 }
