@@ -4,12 +4,12 @@ module.exports = (app) => {
 
     app.get('/usuario', UsuarioController.exibeUsuarios());
 
-    app.get('/usuario/:email', UsuarioController.exibeUsuario());
+    app.get('/usuario/:_id', UsuarioController.exibeUsuario());
     
     app.post('/usuario/adiciona', UsuarioController.adicionaUsuario());
     
-    app.delete('/usuario/:email', UsuarioController.deletaUsuarios());
+    app.delete('/usuario/:_id', UsuarioController.deletaUsuarios());
     
-    app.put('/usuario/:id', UsuarioController.atualizaUsuarios());
+    app.put('/usuario/:_id', UsuarioController.atualizaUsuarios());
     
 }
