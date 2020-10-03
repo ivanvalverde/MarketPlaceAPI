@@ -4,8 +4,8 @@ mongoose.connect(process.env.MONGODB, {
   useNewUrlParser: true,
   useUnifiedTopology: true
 });
-const produtoSchema = require('../models/model-product');
-const fornecedorSchema = require('../models/model-provider');
+const Produto = require('../models/model-product');
+const Fornecedor = require('../models/model-provider');
 const exibirDados = require('../helpers/exibirDados');
 const exibirProduto = require('../helpers/exibirProduto');
 const atualizaProduto = require('../helpers/atualizaProduto');
@@ -18,8 +18,6 @@ class ProdutoController {
 
     static exibeProdutos() {
 
-        const Produto = new mongoose.model('Produto', produtoSchema);
-
         return (req, res) => {
 
             exibirDados(Produto, res);
@@ -29,8 +27,6 @@ class ProdutoController {
 
     static exibeProduto() {
 
-        const Produto = new mongoose.model('Produto', produtoSchema);
-
         return (req, res) => {
 
             exibirProduto(Produto, req ,res);
@@ -39,8 +35,7 @@ class ProdutoController {
     }
 
     static deletaProdutos() {
-        
-        const Produto = new mongoose.model('Produto', produtoSchema);
+    
 
         return async (req, res) => {
             
@@ -50,10 +45,6 @@ class ProdutoController {
 
     static addProdutos() {
 
-        const Produto = new mongoose.model('Produto', produtoSchema);
-        const Fornecedor = new mongoose.model('Fornecedor', fornecedorSchema);
-
-
         return async (req, res) => {
 
             await insereProdutos(Produto, Fornecedor, req, res);
@@ -61,8 +52,6 @@ class ProdutoController {
     }
 
     static atualizaProdutos(){
-
-        const Produto = new mongoose.model('Produto', produtoSchema);
 
         return (req, res)=>{
 
