@@ -17,45 +17,36 @@ class FornecedorController {
   static exibeFornecedores() {
 
     return (req, res) => {
-
       exibirDados(Fornecedor, res);
-
     }
   }
 
   static exibeFornecedor() {
 
     return (req, res) => {
-
       exibirDado(Fornecedor, req, res);
-
     }
   }
 
   static deletaFornecedor() {
 
-    return async (req, res) => {
-
-      await deletaDados(Fornecedor, req, res)
+    return (req, res) => {
+      deletaDados(Fornecedor, req, res)
     }
   }
+  static adicionaFornecedor() {
 
-  static addFornecedores() {
-
-    return async (req, res) => {
-
-      const fornecedor = new Fornecedor({});
-      fornecedor.nome = req.body.nome;
-      fornecedor.razaoSocial = req.body.razaoSocial;
-      await fornecedor.geraSenha(req.body.senha);
-      fornecedor.email = req.body.email;
-      fornecedor.cnpj = req.body.cnpj;
-      fornecedor.telefone = req.body.telefone;
-      fornecedor.endereco = req.body.endereco;
-
-      await fornecedor.save((err) => {
-        if (err) res.send(err)
-      });
+    return (req, res) => {
+      const { razaoSocial, cnpj, senha } = req.body; 
+      const fornecedor = insereDados(Fornecedor, req);
+      fornecedor.cnpj = cnpj;
+      fornecedor.razaoSocial = razaoSocial;
+      fornecedor.setSenha(senha);
+      res.send(JSON.stringify({results: fornecedor}))
+    
+      fornecedor.save((err) =>  
+      { if(err) res.send(JSON.stringify({ erro:"Não foi posível salvar."})) }
+      );
 
       res.redirect('/fornecedor')
     }
@@ -64,7 +55,6 @@ class FornecedorController {
   static atualizaFornecedor() {
 
     return (req, res) => {
-
       atualizaDados(Fornecedor, req.params.id, req.body, res);
 
     }
