@@ -4,12 +4,8 @@ const Compra = require("../models/model-purchase");
 const Cliente = require("../models/model-customer");
 const Produto = require("../models/model-product");
 const exibirDados = require("../helpers/exibirDados");
-const atualizaDados = require("../helpers/atualizaDados");
-const insereDados = require("../helpers/insereDados");
-const deletaDados = require("../helpers/deletaDados");
 const dataAtual = require("../helpers/dataAtual");
 const verificaExistencia = require("../helpers/verificaExistencia");
-const Usuario = require("../models/model-customer");
 
 class CompraController {
   static exibeCompras() {
