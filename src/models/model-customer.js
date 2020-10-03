@@ -16,7 +16,9 @@ usuarioSchema.methods.setSenha = function(pass){
     hashObj = funcHash(pass);
     this.senha = hashObj.storedHash;
     this.salto = hashObj.storedSalt;
-}
+};
+
+const Usuario =  new mongoose.model('Usuario', usuarioSchema);
 
 
-module.exports = usuarioSchema;
+module.exports = Usuario;

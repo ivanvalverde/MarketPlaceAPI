@@ -18,6 +18,8 @@ fornecedorSchema.methods.geraSenha = function(pass){
     hashObj = funcHash(pass);
     this.senha = hashObj.storedHash;
     this.salto = hashObj.storedSalt;
-}
+};
 
-module.exports = fornecedorSchema;
+const Fornecedor = new mongoose.model('Fornecedor', fornecedorSchema);
+
+module.exports = Fornecedor;

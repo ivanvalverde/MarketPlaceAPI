@@ -7,4 +7,6 @@ const compraSchema = new mongoose.Schema({
     dataCancelamento: Date
 });
 
-module.exports = compraSchema;
+const Compra = new mongoose.model('Compra', compraSchema);
+
+module.exports = Compra;
