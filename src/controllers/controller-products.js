@@ -7,6 +7,7 @@ mongoose.connect(process.env.MONGODB, {
 const Produto = require("../models/model-product");
 const Fornecedor = require("../models/model-provider");
 const exibirDados = require("../helpers/exibirDados");
+const exibirDado = require("../helpers/exibirDado");
 const deletaDados = require("../helpers/deletaDados");
 const atualizaDados = require("../helpers/atualizaDados");
 
