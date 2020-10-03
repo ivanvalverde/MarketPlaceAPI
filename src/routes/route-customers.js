@@ -8,7 +8,7 @@ module.exports = (app) => {
     
     app.post('/usuario/adiciona', UsuarioController.adicionaUsuario());
     
-    app.delete('/usuario/:_id', UsuarioController.deletaUsuarios());
+    app.delete('/usuario/:_id', UsuarioController.deletaUsuario());
     
     app.put('/usuario/:_id', UsuarioController.atualizaUsuarios());
     
