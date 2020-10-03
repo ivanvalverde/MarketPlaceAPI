@@ -55,10 +55,8 @@ class FornecedorController {
   static atualizaFornecedor() {
 
     return (req, res) => {
-      atualizaDados(Fornecedor, req.params.id, req.body, res);
-
+      atualizaDados(Fornecedor, req, res);
     }
-
   }
 }
 
