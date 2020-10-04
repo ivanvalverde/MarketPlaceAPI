@@ -1,4 +1,4 @@
-const CompraController = require("../controllers/controller-purchase");
+const CompraController = require("../controllers/compras");
 
 module.exports = (app) => {
 

@@ -1,7 +1,11 @@
-module.exports = async function deletaDados(dado, req, res){
-    await dado.deleteOne({
-        email: req.params.email
-    })
-
-    res.send("Item deletado com sucesso");
-}
+module.exports = async (Model, req, res) => {
+  const { _id } = req.params;
+  try {
+    await Model.deleteOne({
+      _id,
+    });
+    res.send(JSON.stringify({ delete: true }));
+  } catch (err) {
+    res.send(JSON.stringify({ delete: false }));
+  }
+};

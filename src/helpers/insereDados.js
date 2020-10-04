@@ -1,15 +1,7 @@
-module.exports = async function insereDados(dado,req,resp){
-    const user = new dado({});
-    user.nome = req.body.nome;
-    user.geraSenha(req.body.senha);
-    user.email = req.body.email;
-    user.cpf = req.body.cpf
-    user.telefone = req.body.telefone;
-    user.endereco = req.body.endereco;
+module.exports = (Model, req) => {
+    const {nome, email, telefone, endereco, senha} = req.body;
+    const model = new Model({nome, email, telefone, endereco});
+    model.setSenha(senha);
 
-    await user.save((err) => {
-        if (err) resp.send(err)
-    });
-
-    resp.redirect('/usuario')
+    return model;
 }

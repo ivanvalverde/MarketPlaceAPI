@@ -4,10 +4,12 @@ const produtoSchema = new mongoose.Schema({
     nome: String,
     descricao: String,
     avaliacao: String,
-    preco: String,
+    preco: Number,
     estoque: Number,
     fornecedor: String
 
 });
 
-module.exports = produtoSchema;
+const Produto = new mongoose.model('Produto', produtoSchema);
+
+module.exports = Produto;

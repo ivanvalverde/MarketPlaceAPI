@@ -1,7 +1,7 @@
-module.exports = async function exibirDado(dado, req ,resp){
-  const { email } = req.params; 
-  await dado.findOne({ email }, (err, elemento)=>{
-      if (err) return err;
-      resp.send(`${elemento}`);
+module.exports = async (Model, req ,res) => {
+  const { _id } = req.params; 
+  await Model.findOne({ _id }, (err, elemento)=>{
+      if (err) res.send(JSON.stringify({results: err}));
+      res.send(JSON.stringify({results: elemento}));
   });
 }
