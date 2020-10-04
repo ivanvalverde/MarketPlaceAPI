@@ -1,4 +1,4 @@
-const FornecedorController = require('../controllers/controller-providers');
+const FornecedorController = require('../controllers/fornecedores');
 
 module.exports = (app) => {
 
