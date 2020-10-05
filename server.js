@@ -22,3 +22,5 @@ rotasCompras(app);
 app.listen(port, () => {
     console.log(`http://localhost:${port}/usuario`);
 })
+
+module.exports = app;

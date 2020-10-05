@@ -5,8 +5,8 @@ module.exports = async (Model, req, res) => {
   delete req.body.fornecedor;
   try {
     await Model.updateOne({ _id }, { ...req.body });
-    res.send(JSON.stringify({ modified: true }));
+    res.send({ modified: true }).json();
   } catch (err) {
-    res.send(JSON.stringify({ modified: false }));
+    res.send({ modified: false }).json();
   }
 };
