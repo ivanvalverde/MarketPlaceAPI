@@ -4,7 +4,7 @@
   "description": "Projeto de encerramento de módulo do Resilia",
   "main": "server.js",
   "scripts": {
-    "test": "mocha test/integration/tests.spec.js",
+    "test": "mocha test/integration/testsCliente.spec.js",
     "start": "nodemon server.js"
   },
   "repository": {

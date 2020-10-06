@@ -5,30 +5,30 @@ const mongoose = require('mongoose');
 const clientModel = require('../../src/models/cliente');
 
 let should = chai.should();
-
-
-
 chai.use(chaiHttp);
+
+let testObj = {};
 
 describe('Route Cliente', () => {
 
 
     //GET ROUTE
 
-    describe('Testing Route GET /Cliente', () => {
-        it('It should return a status code of 200 and an array with objects', (done) => {
+    describe('Testando rota GET /Cliente', () => {
+        it('Deve ter um status de 200 e retornar um array pelo menos 1 objeto', (done) => {
             chai.request(server)
                 .get('/cliente')
                 .end((err, res) => {
                     res.should.have.status(200);
                     res.body.results.should.be.an('array');
                     res.body.results[0].should.be.an('object');
+                    res.body.results.should.have.lengthOf.at.least(1);
                     done();
                 });
 
         });
 
-        it('The array should return one or more objects with properties', (done) => {
+        it('O array retornado não deve estar vazio e deve conter um objeto com as propriedades do cliente', (done) => {
             chai.request(server)
                 .get('/cliente')
                 .end((err, res) => {
@@ -51,8 +51,8 @@ describe('Route Cliente', () => {
 
     //GET one ROUTE
 
-    describe('/GET/:_id cliente', () => {
-        it('It should GET the correct client by the given id', (done) => {
+    describe('Testando rota GET/_id /Cliente', () => {
+        it('Deve retornar o cliente com o respectivo id', (done) => {
             chai.request(server)
                 .get('/cliente/' + '5f7a5d378a06e901756200f8')
                 .end((err, res) => {
@@ -65,13 +65,13 @@ describe('Route Cliente', () => {
 
 
         });
-        
+
     });
 
 
     //POST ROUTE
 
-    describe('Testing Route POST /Cliente', () => {
+    describe('Testando rota POST /Cliente', () => {
 
         let testClient = {
             "nome": "Raimunda Pereira dos Santos",
@@ -82,12 +82,14 @@ describe('Route Cliente', () => {
             "cpf": "15562736298"
         }
 
-        it('It should return a status code of 200', (done) => {
+        it('Deve ter um status de 200 e adicionar no banco um objeto previamente construído', (done) => {
             chai.request(server)
                 .post('/cliente/adiciona')
                 .send(testClient)
                 .end((err, res) => {
                     res.should.have.status(200);
+                    res.body.results[(res.body.results.length - 1)].should.have.property('nome').eql('Raimunda Pereira dos Santos');
+                    testObj = res.body.results[(res.body.results.length - 1)];
                     done();
                 });
 
@@ -96,8 +98,8 @@ describe('Route Cliente', () => {
 
         //DELETE ROUTE
 
-        describe('Testing Route DELETE /Cliente', () => {
-            it('it should DELETE a client given the id', (done) => {
+        describe('Testando rota DELETE /Cliente', () => {
+            it('Deve deletar um cliente adicionado ao banco e retornar um objeto com o atributo delete:true', (done) => {
                 let createdClient = new clientModel({
                     "nome": "Adriana Rodriguez",
                     "email": "dindinha22@gmail.com",
@@ -112,21 +114,33 @@ describe('Route Cliente', () => {
                         .end((err, res) => {
                             res.should.have.status(200);
                             res.body.should.be.a('object');
+                            res.body.should.have.property('delete').eql(true);
                             done();
                         });
                 });
+            });
+
+            it('Deve deletar o cliente inserido no teste do POST', (done) => {
+
+                chai.request(server)
+                    .delete('/cliente/' + testObj._id)
+                    .end((err, res) => {
+                        res.body.should.have.property('delete').eql(true);
+                        done();
+                    });
+
             });
 
         });
 
         //PUT ROUTE
 
-        describe('Testing route PUT /Cliente', () => {
-            it('it should UPDATE a client given the id', (done) => {
+        describe('Testando PUT /Cliente', () => {
+            it('Deve ter status 200 e retornar um objeto com o atributo modified:true', (done) => {
 
                 chai.request(server)
                     .put('/cliente/altera/' + '5f7a5d378a06e901756200f8')
-                    .send({telefone:'997656772'})
+                    .send({ telefone: '997656772' })
                     .end((err, res) => {
                         res.should.have.status(200);
                         res.body.should.be.a('object');

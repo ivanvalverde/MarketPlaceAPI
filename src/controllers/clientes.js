@@ -38,7 +38,7 @@ class ClientesController {
             const cliente = insereDados(Cliente, req, res);
             cliente.cpf = cpf;
             await cliente.save((err) => {
-                if(err) res.send(JSON.stringify({results: err}))
+                if(err) res.send({results: err}).json();
             })
             res.redirect('/cliente')
         }
