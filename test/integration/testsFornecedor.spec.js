@@ -31,7 +31,7 @@ describe('Route Fornecedor', () => {
             "senha": "12345"
         }
 
-        it('Deve ter um status de 200 e adicionar no banco um objeto previamente construído', (done) => {
+        it('Deve adicionar no banco um objeto previamente construído', (done) => {
             chai.request(server)
                 .post('/fornecedor/adiciona')
                 .send(testProvider)
@@ -63,7 +63,7 @@ describe('Route Fornecedor', () => {
 
     });
 
-    //GET one ROUTE
+    //GET one ROUTE 
 
     describe('Testando rota GET/_id /Fornecedor', () => {
         it('Deve retornar o status 200 e o fornecedor com o respectivo id', (done) => {

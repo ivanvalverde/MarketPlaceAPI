@@ -19,7 +19,7 @@ class CompraController {
       const { idProduto } = req.params;
       Compra.find({ idProduto }, (err, compras) => {
         if (err) res.send(JSON.stringify({ results: err }));
-        res.send(JSON.stringify({ results: compras }));
+        res.send({ results: compras }).json();
       });
     };
   }
@@ -29,7 +29,7 @@ class CompraController {
       const { idCliente } = req.params;
       Compra.find({ idCliente }, (err, compras) => {
         if (err) res.send(JSON.stringify({ results: err }));
-        res.send(JSON.stringify({ results: compras }));
+        res.send({ results: compras }).json();
       });
     };
   }
@@ -50,7 +50,7 @@ class CompraController {
         await compra.save((err) => {
           if (err) res.send(JSON.stringify({ erro: "Compra não cancelada" }));
         });
-        res.send(JSON.stringify({ results: compra }));
+        res.send({ results: compra }).json();
       });
     };
   }
