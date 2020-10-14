@@ -1,4 +1,4 @@
-const CompraController = require("../controllers/controller-purchase");
+const CompraController = require("../controllers/compras");
 
 module.exports = (app) => {
 
@@ -10,6 +10,6 @@ module.exports = (app) => {
     
     app.post('/compra/adiciona/', CompraController.realizaCompra());
 
-    app.put('/compra/:_id', CompraController.cancelaCompra());
+    app.put('/compra/altera/:_id', CompraController.cancelaCompra());
     
 }

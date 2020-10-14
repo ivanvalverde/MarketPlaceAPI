@@ -1,7 +1,7 @@
 const mongoose = require('mongoose');
 const funcHash = require('../helpers/hash');
 
-const usuarioSchema = new mongoose.Schema({
+const clienteSchema = new mongoose.Schema({
     nome: String,
     senha: String,
     salto: String,
@@ -12,10 +12,13 @@ const usuarioSchema = new mongoose.Schema({
 
 }); 
 
-usuarioSchema.methods.geraSenha = function(pass){
+clienteSchema.methods.setSenha = function(pass){
     hashObj = funcHash(pass);
     this.senha = hashObj.storedHash;
     this.salto = hashObj.storedSalt;
-}
+};
 
-module.exports = usuarioSchema;
+const Cliente =  new mongoose.model('Cliente', clienteSchema);
+
+
+module.exports = Cliente;
