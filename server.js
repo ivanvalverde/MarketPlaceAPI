@@ -4,7 +4,7 @@ const bodyParser = require('body-parser');
 const rotasCliente = require('./src/routes/cliente');
 const rotasFornecedor = require('./src/routes/fornecedor');
 const rotasProdutos = require('./src/routes/produto');
-const rotasCompras = require('./src/routes/compra')
+const rotasCompras = require('./src/routes/compra');
 
 const port = process.env.PORT || 3000;
 

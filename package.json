@@ -4,7 +4,7 @@
   "description": "Projeto de encerramento de módulo do Resilia",
   "main": "server.js",
   "scripts": {
-    "test": "set NODE_ENV=test&&mocha test/integration/*",
+    "test": "set NODE_ENV=test&&mocha test/integration/* --timeout 3000",
     "start": "nodemon server.js"
   },
   "repository": {

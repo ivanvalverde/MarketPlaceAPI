@@ -6,8 +6,6 @@ const atualizaDados = require('../helpers/atualizaDados');
 const insereDados = require('../helpers/insereDados');
 const deletaDados = require('../helpers/deletaDados');
 
-
-
 class ClientesController {
 
     static exibeClientes() {
@@ -20,12 +18,12 @@ class ClientesController {
     static exibeCliente() {
 
         return (req, res) => {
-            exibirDado(Cliente, req ,res);
+            exibirDado(Cliente, req, res);
         }
     }
 
     static deletaCliente() {
-    
+
         return (req, res) => {
             deletaDados(Cliente, req, res)
         }
@@ -38,15 +36,15 @@ class ClientesController {
             const cliente = insereDados(Cliente, req, res);
             cliente.cpf = cpf;
             await cliente.save((err) => {
-                if(err) res.send({results: err}).json();
+                if (err) res.send({ results: err }).json();
             })
-            res.redirect('/cliente')
+            res.redirect('/cliente');
         }
     }
 
-    static atualizaCliente(){
+    static atualizaCliente() {
 
-        return (req, res)=>{
+        return (req, res) => {
 
             atualizaDados(Cliente, req, res);
 
