@@ -20,7 +20,7 @@ rotasProdutos(app);
 rotasCompras(app);
 
 app.listen(port, () => {
-    console.log(`http://localhost:${port}/usuario`);
+    console.log(`http://localhost:${port}/cliente`);
 });
 
 module.exports = app;
