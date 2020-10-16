@@ -91,3 +91,7 @@ Construir uma Restful API simulando um Marketplace. Através das rotas deve ser 
 - **GET(única compra) */compra/cliente/idCliente*:** Retorna como resposta uma única transação cujo id do cliente associado é passado como parâmetro na URI (substituindo o id);<br>
 - **POST */compra/adiciona*:** Adiciona uma nova transação no banco da API, os atributos do produto devem ser enviados através do corpo da requisição em formato JSON(devem ser informados, o id do cliente que está realizando a compra e o id do produto a ser comprado nos campos *idCliente* e *idFornecedor*);<br>
 - **PUT */compra/altera/id*:** Cancela a transação cujo id foi passado como parâmetro na URI (substituindo o id). Essa transação não será removida do sistema, apenas o atributo *dataCancelamento* irá ser alterado para o momento em que foi feita a requisição.<br><br>
+
+## Deploy
+
+Para hospedar gratuitamente nossa aplicação, utilizamos o heroku. A API pode ser acessada através do link: **https://enigmatic-earth-80179.herokuapp.com/** + rota desejada.
