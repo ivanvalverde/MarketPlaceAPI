@@ -9,7 +9,6 @@ const clienteSchema = new mongoose.Schema({
     cpf: String,
     telefone: String,
     endereco: String
-
 }); 
 
 clienteSchema.methods.setSenha = function(pass){

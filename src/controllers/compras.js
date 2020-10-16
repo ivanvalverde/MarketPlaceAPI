@@ -1,5 +1,4 @@
 const banco = require('../config/database');
-
 const Compra = require("../models/compra");
 const Cliente = require("../models/cliente");
 const Produto = require("../models/produto");
