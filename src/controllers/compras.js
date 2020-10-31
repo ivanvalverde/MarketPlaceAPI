@@ -65,8 +65,11 @@ class CompraController {
         dataCompra: dataAtual(),
         dataCancelamento: null,
       });
+
       compra.save((err) => {
         if (err) res.send(JSON.stringify({ erro: "Compra não finalizada" }));
+        Produto.findById({ _id: idProduto }, (err, produto) => {produto.estoque -= 1;
+        produto.save()})
       });
 
       res.redirect("/compra");

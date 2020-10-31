@@ -10,7 +10,8 @@ const fornecedorSchema = new mongoose.Schema({
     email: String,
     endereco: String,
     salto: String,
-    senha: String
+    senha: String,
+    foto: String
 
 });
 

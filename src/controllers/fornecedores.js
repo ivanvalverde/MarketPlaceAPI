@@ -26,7 +26,7 @@ class FornecedorController {
   }
   static adicionaFornecedor() {
     return (req, res) => {
-      const { razaoSocial, cnpj, senha } = req.body;
+      const { razaoSocial, cnpj, senha} = req.body;
       const fornecedor = insereDados(Fornecedor, req);
       fornecedor.cnpj = cnpj;
       fornecedor.razaoSocial = razaoSocial;

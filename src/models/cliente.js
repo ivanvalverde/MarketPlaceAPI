@@ -8,7 +8,8 @@ const clienteSchema = new mongoose.Schema({
     email: String,
     cpf: String,
     telefone: String,
-    endereco: String
+    endereco: String,
+    foto: String
 }); 
 
 clienteSchema.methods.setSenha = function(pass){
