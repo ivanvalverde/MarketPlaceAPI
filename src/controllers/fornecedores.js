@@ -19,6 +19,13 @@ class FornecedorController {
     };
   }
 
+  static exibeFornecedorViaEmail() {
+
+    return (req, res) => {
+      exibirDadoEmail(Fornecedor, req, res);
+    }
+  }
+
   static deletaFornecedor() {
     return (req, res) => {
       deletaDados(Fornecedor, req, res);
@@ -26,7 +33,7 @@ class FornecedorController {
   }
   static adicionaFornecedor() {
     return (req, res) => {
-      const { razaoSocial, cnpj, senha} = req.body;
+      const { razaoSocial, cnpj, senha } = req.body;
       const fornecedor = insereDados(Fornecedor, req);
       fornecedor.cnpj = cnpj;
       fornecedor.razaoSocial = razaoSocial;
