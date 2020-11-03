@@ -2,6 +2,7 @@ const banco = require('../config/database');
 const Cliente = require('../models/cliente');
 const exibirDados = require('../helpers/exibirDados');
 const exibirDado = require('../helpers/exibirDado');
+const exibirDadoEmail = require('../helpers/exibirDadoEmail');
 const atualizaDados = require('../helpers/atualizaDados');
 const insereDados = require('../helpers/insereDados');
 const deletaDados = require('../helpers/deletaDados');
@@ -19,6 +20,13 @@ class ClientesController {
 
         return (req, res) => {
             exibirDado(Cliente, req, res);
+        }
+    }
+
+    static exibeClienteViaEmail() {
+
+        return (req, res) => {
+            exibirDadoEmail(Cliente, req, res);
         }
     }
 

@@ -5,6 +5,8 @@ module.exports = (app) => {
     app.get('/cliente', ClienteController.exibeClientes());
 
     app.get('/cliente/:_id', ClienteController.exibeCliente());
+
+    app.get('/cliente/email/:email', ClienteController.exibeClienteViaEmail());
     
     app.post('/cliente/adiciona', ClienteController.adicionaCliente());
     
