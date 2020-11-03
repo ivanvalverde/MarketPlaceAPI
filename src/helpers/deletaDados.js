@@ -4,8 +4,8 @@ module.exports = async (Model, req, res) => {
     await Model.deleteOne({
       _id,
     });
-    res.send({ delete: true }).json();
+    res.send({ delete: true });
   } catch (err) {
-    res.send({ delete: false }).json();
+    res.send({ delete: false });
   }
 };
