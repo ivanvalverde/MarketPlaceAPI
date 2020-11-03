@@ -2,6 +2,7 @@ const banco = require("../config/database");
 const Fornecedor = require("../models/fornecedor");
 const exibirDados = require("../helpers/exibirDados");
 const exibirDado = require("../helpers/exibirDado");
+const exibirDadoEmail = require('../helpers/exibirDadoEmail');
 const atualizaDados = require("../helpers/atualizaDados");
 const insereDados = require("../helpers/insereDados");
 const deletaDados = require("../helpers/deletaDados");
