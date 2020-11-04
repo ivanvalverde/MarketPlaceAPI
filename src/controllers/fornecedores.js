@@ -33,14 +33,14 @@ class FornecedorController {
     };
   }
   static adicionaFornecedor() {
-    return (req, res) => {
+    return async (req, res) => {
       const { razaoSocial, cnpj, senha } = req.body;
       const fornecedor = insereDados(Fornecedor, req);
       fornecedor.cnpj = cnpj;
       fornecedor.razaoSocial = razaoSocial;
       fornecedor.setSenha(senha);
 
-      fornecedor.save((err) => {
+      await fornecedor.save((err) => {
         if (err) res.send(JSON.stringify({ erro: "Não foi posível salvar." }));
       });
 
