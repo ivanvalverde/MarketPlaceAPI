@@ -34,13 +34,13 @@ class FornecedorController {
   }
   static adicionaFornecedor() {
     return async (req, res) => {
-      const { razaoSocial, cnpj, senha } = req.body;
+      const { razaoSocial, cnpj} = req.body;
       const fornecedor = insereDados(Fornecedor, req);
       fornecedor.cnpj = cnpj;
       fornecedor.razaoSocial = razaoSocial;
 
       await fornecedor.save((err) => {
-        if (err) res.send({ erro: "Não foi posível salvar." });
+        if (err) res.send({ erro: err });
       });
 
       res.redirect("/fornecedor");
