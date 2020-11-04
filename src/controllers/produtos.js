@@ -7,6 +7,16 @@ const deletaDados = require("../helpers/deletaDados");
 const atualizaDados = require("../helpers/atualizaDados");
 
 class ProdutoController {
+
+  static buscaProdutos(){
+    return (req, res) => {
+      const query = new RegExp(req.params.content, 'gi');
+      Produto.find(({nome: query}), (err, results) => {
+        res.send(results)
+      })
+    }
+  }
+
   static exibeProdutos() {
     return (req, res) => {
       exibirDados(Produto, res);
