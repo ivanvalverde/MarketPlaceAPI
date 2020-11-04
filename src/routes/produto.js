@@ -4,6 +4,8 @@ module.exports = (app) => {
 
     app.get('/produto', ProdutoController.exibeProdutos());
 
+    app.get('/produto/search/:content', ProdutoController.buscaProdutos());
+
     app.get('/produto/:_id', ProdutoController.exibeProduto());
     
     app.post('/produto/adiciona', ProdutoController.adicionaProduto());
