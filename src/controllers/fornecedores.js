@@ -38,10 +38,9 @@ class FornecedorController {
       const fornecedor = insereDados(Fornecedor, req);
       fornecedor.cnpj = cnpj;
       fornecedor.razaoSocial = razaoSocial;
-      fornecedor.setSenha(senha);
 
       await fornecedor.save((err) => {
-        if (err) res.send(JSON.stringify({ erro: "Não foi posível salvar." }));
+        if (err) res.send({ erro: "Não foi posível salvar." });
       });
 
       res.redirect("/fornecedor");
