@@ -41,12 +41,12 @@ class ClientesController {
 
         return async (req, res) => {
             const { cpf } = req.body;
-            const cliente = insereDados(Cliente, req, res);
+            const cliente = await insereDados(Cliente, req, res);
             cliente.cpf = cpf;
             await cliente.save((err) => {
                 if (err) res.send({ results: err });
             })
-            res.redirect('/cliente');
+            res.send({response: "ok"});
         }
     }
 

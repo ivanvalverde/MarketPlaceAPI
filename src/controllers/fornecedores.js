@@ -35,7 +35,7 @@ class FornecedorController {
   static adicionaFornecedor() {
     return async (req, res) => {
       const { razaoSocial, cnpj} = req.body;
-      const fornecedor = insereDados(Fornecedor, req);
+      const fornecedor = await insereDados(Fornecedor, req);
       fornecedor.cnpj = cnpj;
       fornecedor.razaoSocial = razaoSocial;
 
@@ -43,7 +43,7 @@ class FornecedorController {
         if (err) res.send({ erro: err });
       });
 
-      res.redirect("/fornecedor");
+      res.send({response: "ok"});
     };
   }
 
