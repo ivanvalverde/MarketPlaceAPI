@@ -1,10 +1,11 @@
-const banco = require('../config/database');
+const banco = require("../config/database");
 const Compra = require("../models/compra");
 const Cliente = require("../models/cliente");
 const Produto = require("../models/produto");
 const exibirDados = require("../helpers/exibirDados");
 const dataAtual = require("../helpers/dataAtual");
 const verificaExistencia = require("../helpers/verificaExistencia");
+const Fornecedor = require("../models/fornecedor");
 
 class CompraController {
   static exibeCompras() {
@@ -29,6 +30,25 @@ class CompraController {
       Compra.find({ idCliente }, (err, compras) => {
         if (err) res.send(JSON.stringify({ results: err }));
         res.send({ results: compras });
+      });
+    };
+  }
+
+  static exibeComprasFornecedor() {
+    return (req, res) => {
+      const { idFornecedor } = req.params;
+      Fornecedor.findOne({ _id: idFornecedor }, (err, prov) => {
+        if (err) {
+          res.send({ results: err });
+        } else {
+          Produto.find({ fornecedor: prov._id }, (err, prod) => {
+            if (err) {
+              res.send({ results: err });
+            } else {
+              res.send({ results: prod })
+            }
+          });
+        }
       });
     };
   }
@@ -68,8 +88,10 @@ class CompraController {
 
       compra.save((err) => {
         if (err) res.send(JSON.stringify({ erro: "Compra não finalizada" }));
-        Produto.findById({ _id: idProduto }, (err, produto) => {produto.estoque -= 1;
-        produto.save()})
+        Produto.findById({ _id: idProduto }, (err, produto) => {
+          produto.estoque -= 1;
+          produto.save();
+        });
       });
 
       res.redirect("/compra");
